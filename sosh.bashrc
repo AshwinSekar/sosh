@@ -20,7 +20,7 @@ alias soh='so stake-history'
 alias sova='so vote-account'
 alias sosa='so stake-account'
 
-alias sv='~/solana/rel/bin/solana-validator'
+alias sv='~/solana/rel/bin/agave-validator'
 alias svm='sv --ledger ~/ledger monitor'
 alias sve='sv --ledger ~/ledger exit'
 alias svem='sve -m'
