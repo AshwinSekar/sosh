@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-for d in /dev/nvme[23]n1; do
+for d in $(lsblk --output PATH -n | grep nvme); do
   if [[ -e $d ]]; then
     echo -n "$d: "
     sudo nvme smart-log "$d" | ag percentage_used
