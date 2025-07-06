@@ -56,7 +56,6 @@ args=(
   --skip-poh-verify
   --no-poh-speed-test
   --wal-recovery-mode skip_any_corrupted_record
-  --full-snapshot-interval-slots 12000
   --maximum-full-snapshots-to-retain 1
   --maximum-incremental-snapshots-to-retain 1
   --no-snapshot-fetch
@@ -81,6 +80,12 @@ if [[ -n $SOSH_ACCOUNTS_INDEX_MEMORY_LIMIT_MB ]]; then
   )
 else
   args+=(--disable-accounts-disk-index)
+fi
+
+if [[ -n $SOSH_SNAPSHOT_INTERVAL_SLOTS ]]; then
+  args+=(
+    --snapshot-interval-slots $SOSH_SNAPSHOT_INTERVAL_SLOTS
+  )
 fi
 
 
