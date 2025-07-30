@@ -59,6 +59,7 @@ args=(
   --maximum-full-snapshots-to-retain 1
   --maximum-incremental-snapshots-to-retain 1
   --no-snapshot-fetch
+  --delay-leader-block-for-pending-fork
   --vote-account $SOSH_VALIDATOR_VOTE_ACCOUNT
 )
 
