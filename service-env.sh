@@ -38,7 +38,7 @@ else
 fi
 
 unset SOLANA_METRICS_CONFIG
-export SOLANA_METRICS_CONFIG
+export SOLANA_METRICS_CONFIG="host=https://metrics.solana.com:8086,db=mainnet-beta,u=mainnet-beta_write,p=password"
 
 export RUST_BACKTRACE=1
 if [[ -z $RUST_LOG ]]; then

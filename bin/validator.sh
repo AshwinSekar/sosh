@@ -36,7 +36,7 @@ find ~/ledger/ -name 'snapshot-*' -size 0 -print -exec rm {} \; || true
 args=(
   --no-untrusted-rpc
   --gossip-port $SOSH_GOSSIP_PORT
-  --dynamic-port-range $SOSH_GOSSIP_PORT-$((SOSH_GOSSIP_PORT + 22))
+  --dynamic-port-range $SOSH_GOSSIP_PORT-$((SOSH_GOSSIP_PORT + 25))
   --identity $SOSH_VALIDATOR_IDENTITY
   --ledger ~/ledger
   --expected-genesis-hash $SOSH_EXPECTED_GENESIS_HASH
@@ -53,12 +53,11 @@ args=(
   --rpc-port 8899
   --full-rpc-api
   --rpc-send-leader-count 3 # (default is 2)
-  --skip-poh-verify
   --no-poh-speed-test
   --wal-recovery-mode skip_any_corrupted_record
   --maximum-full-snapshots-to-retain 1
   --maximum-incremental-snapshots-to-retain 1
-  --no-snapshot-fetch
+  # --no-snapshot-fetch
   --delay-leader-block-for-pending-fork
   --vote-account $SOSH_VALIDATOR_VOTE_ACCOUNT
 )
@@ -80,7 +79,7 @@ if [[ -n $SOSH_ACCOUNTS_INDEX_MEMORY_LIMIT_MB ]]; then
     --accounts-index-memory-limit-mb $SOSH_ACCOUNTS_INDEX_MEMORY_LIMIT_MB
   )
 else
-  args+=(--disable-accounts-disk-index)
+  # args+=(--disable-accounts-disk-index)
 fi
 
 if [[ -n $SOSH_SNAPSHOT_INTERVAL_SLOTS ]]; then
@@ -117,7 +116,7 @@ case $v in
   ;;
 *)
   echo Solana 1.19 or greater detected
-  args+=(--replay-slots-concurrently)
+  # args+=(--replay-slots-concurrently)
   #args+=(--use-snapshot-archives-at-startup when-newest)
   ;;
 esac

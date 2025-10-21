@@ -20,7 +20,8 @@ SOSH_PERFORMANCE_GOVERNOR=x
 
 ## Specify `--accounts-index-memory-limit-mb` with this amount
 # For 512GB RAM consider using `unset SOSH_ACCOUNTS_INDEX_MEMORY_LIMIT_MB`
-SOSH_ACCOUNTS_INDEX_MEMORY_LIMIT_MB=10000
+# SOSH_ACCOUNTS_INDEX_MEMORY_LIMIT_MB=10000
+unset SOSH_ACCOUNTS_INDEX_MEMORY_LIMIT_MB
 
 ## Define a webhook for light notifications
 #SOSH_SLACK_WEBHOOK=somewhere
