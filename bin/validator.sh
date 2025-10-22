@@ -60,7 +60,13 @@ args=(
   # --no-snapshot-fetch
   --delay-leader-block-for-pending-fork
   --vote-account $SOSH_VALIDATOR_VOTE_ACCOUNT
+  --experimental-retransmit-xdp-cpu-cores 1
+  --experimental-poh-pinned-cpu-core 10
 )
+
+if [[ -n $SOSH_XDP_ZC ]]; then
+  args+=(--experimental-retransmit-xdp-zero-copy)
+fi
 
 if [[ -n $SOSH_GOSSIP_HOST ]]; then
   args+=(--gossip-host $SOSH_GOSSIP_HOST)
