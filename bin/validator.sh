@@ -58,6 +58,7 @@ args=(
   --maximum-full-snapshots-to-retain 1
   --maximum-incremental-snapshots-to-retain 1
   # --no-snapshot-fetch
+  --minimal-snapshot-download-speed 100485760
   --delay-leader-block-for-pending-fork
   --vote-account $SOSH_VALIDATOR_VOTE_ACCOUNT
   --experimental-retransmit-xdp-cpu-cores 1
