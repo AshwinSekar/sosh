@@ -84,11 +84,19 @@ if [[ -n $SOSH_ACCOUNTS_INDEX_MEMORY_LIMIT_MB ]]; then
   args+=(
     --accounts-index-memory-limit-mb $SOSH_ACCOUNTS_INDEX_MEMORY_LIMIT_MB
   )
+else
+  args+=(
+    --disable-accounts-disk-index
+  )
 fi
 
 if [[ -n $SOSH_SNAPSHOT_INTERVAL_SLOTS ]]; then
   args+=(
     --snapshot-interval-slots $SOSH_SNAPSHOT_INTERVAL_SLOTS
+  )
+else
+  args+=(
+    --no-snapshots
   )
 fi
 
