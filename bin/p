@@ -84,4 +84,4 @@ fi
   ln -sf -T $SOLANA ~/solana
 )
 
-sudo setcap cap_net_raw,cap_bpf,cap_net_admin=p /home/sol/solana/rel/bin/agave-validator
+sudo setcap cap_net_raw,cap_bpf,cap_net_admin,cap_perfom=p /home/sol/solana/rel/bin/agave-validator
