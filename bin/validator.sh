@@ -65,8 +65,9 @@ args=(
   --experimental-poh-pinned-cpu-core 10
 )
 
-if [[ -n $SOSH_XDP_ZC ]]; then
+if [[ -n $XDP_INTERFACE ]]; then
   args+=(--experimental-retransmit-xdp-zero-copy)
+  args+=(--experimental-retransmit-xdp-interface $XDP_INTERFACE)
 fi
 
 if [[ -n $SOSH_GOSSIP_HOST ]]; then
@@ -79,16 +80,6 @@ fi
 
 if [[ -n $SOSH_RPC_PUBSUB_NOTIFICATION_THREADS ]]; then
   args+=(--rpc-pubsub-notification-threads $SOSH_RPC_PUBSUB_NOTIFICATION_THREADS)
-fi
-
-if [[ -n $SOSH_ACCOUNTS_INDEX_MEMORY_LIMIT_MB ]]; then
-  args+=(
-    --accounts-index-memory-limit-mb $SOSH_ACCOUNTS_INDEX_MEMORY_LIMIT_MB
-  )
-else
-  args+=(
-    --disable-accounts-disk-index
-  )
 fi
 
 if [[ -n $SOSH_SNAPSHOT_INTERVAL_SLOTS ]]; then
@@ -205,3 +196,4 @@ if [[ -n $SOSH_SLACK_WEBHOOK ]]; then
 fi
 
 exec solana-validator "${args[@]}" "$@"
+
