@@ -18,7 +18,7 @@ fi
   exit 1
 }
 
-if [[ -d ~/solana/jito-programs ]]; then
+if [[ -d ~/solana/jito-protos ]]; then
   JITO=1
 fi
 
