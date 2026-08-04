@@ -36,7 +36,7 @@ find ~/ledger/ -name 'snapshot-*' -size 0 -print -exec rm {} \; || true
 args=(
   --no-untrusted-rpc
   --gossip-port $SOSH_GOSSIP_PORT
-  --dynamic-port-range $SOSH_GOSSIP_PORT-$((SOSH_GOSSIP_PORT + 25))
+  --dynamic-port-range $SOSH_GOSSIP_PORT-$((SOSH_GOSSIP_PORT + 26))
   --identity $SOSH_VALIDATOR_IDENTITY
   --ledger ~/ledger
   --expected-genesis-hash $SOSH_EXPECTED_GENESIS_HASH
@@ -57,17 +57,16 @@ args=(
   --wal-recovery-mode skip_any_corrupted_record
   --maximum-full-snapshots-to-retain 1
   --maximum-incremental-snapshots-to-retain 1
-  # --no-snapshot-fetch
+  --no-snapshot-fetch
   --minimal-snapshot-download-speed 100485760
-  --delay-leader-block-for-pending-fork
   --vote-account $SOSH_VALIDATOR_VOTE_ACCOUNT
-  --experimental-retransmit-xdp-cpu-cores 1
-  --experimental-poh-pinned-cpu-core 10
+  --xdp-cpu-cores 1
+  --poh-pinned-cpu-core 10
 )
 
 if [[ -n $XDP_INTERFACE ]]; then
-  args+=(--experimental-retransmit-xdp-zero-copy)
-  args+=(--experimental-retransmit-xdp-interface $XDP_INTERFACE)
+  args+=(--xdp-zero-copy)
+  args+=(--xdp-interface $XDP_INTERFACE)
 fi
 
 if [[ -n $SOSH_GOSSIP_HOST ]]; then
